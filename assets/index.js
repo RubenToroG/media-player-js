@@ -1,15 +1,26 @@
-const video = document.querySelector("video")
-const button = document.querySelector('button')
+const video = document.querySelector("video");
+const button = document.querySelector("button");
 
-function MediaPlayer(configuracion) {
-    this.miVideo = configuracion.paso
-
+function MediaPlayer(config) {
+  this.miVideo = config.element;
 }
 
-MediaPlayer.prototype.avanza = function(){
-    this.miVideo.play()
-}
+MediaPlayer.prototype.playVideo = function () {
+  this.miVideo.playVideo();
+};
 
-const comienza = new MediaPlayer({ paso: video })
+MediaPlayer.prototype.pauseVideo = function () {
+  this.miVideo.pauseVideo();
+};
 
-button.onclick = () => comienza.avanza()
+MediaPlayer.prototype.togglePlay = function () {
+  if (this.miVideo.paused) {
+    this.miVideo.play();
+  } else {
+    this.miVideo.pause();
+  }
+};
+
+const player = new MediaPlayer({ element: video });
+
+button.onclick = () => player.togglePlay();
