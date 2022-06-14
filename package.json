@@ -1,0 +1,19 @@
+{
+  "name": "media-player-javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server"
+  },
+  "keywords": [
+    "media",
+    "player",
+    "javascript"
+  ],
+  "author": "Ruben Toro <rubensdt01@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
