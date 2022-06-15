@@ -1,26 +1,14 @@
-const video = document.querySelector("video");
-const button = document.querySelector("button");
+import MediaPlayer from "./MediaPlayer.js";
+import AutoPlay from "./plugins/AutoPlay.js";
 
-function MediaPlayer(config) {
-  this.miVideo = config.element;
-}
+const myVideo = document.querySelector("video");
+const buttonPlay = document.getElementById("buttonPlay");
+const buttonMute = document.getElementById("buttonMute");
 
-MediaPlayer.prototype.playVideo = function () {
-  this.miVideo.playVideo();
-};
+const player = new MediaPlayer({
+  myVideo,
+  plugins: [new AutoPlay(myVideo)],
+});
 
-MediaPlayer.prototype.pauseVideo = function () {
-  this.miVideo.pauseVideo();
-};
-
-MediaPlayer.prototype.togglePlay = function () {
-  if (this.miVideo.paused) {
-    this.miVideo.play();
-  } else {
-    this.miVideo.pause();
-  }
-};
-
-const player = new MediaPlayer({ element: video });
-
-button.onclick = () => player.togglePlay();
+buttonPlay.onclick = () => player.togglePlayPause();
+buttonMute.onclick = () => player.toggleMutedUnmuted();
